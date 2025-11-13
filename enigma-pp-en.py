@@ -198,7 +198,7 @@ class ParameterProcessing:
         return turn_extent # The value lies between -2^32 and 2^32.
 
     def deflect_generation(self) -> list[int]:
-        rotors_max_num : int = 128
+        rotors_max_num : int = 64
         rotors_min_num : int = 32
 
         parameter : str = self.parameters[0]
@@ -209,7 +209,7 @@ class ParameterProcessing:
         # Generate a SHA-3-256 value for each initial offset parameter, converting it to an integer based on the key.
         # 256 bits equates to approximately 1.16*10^77, which falls short of 64!'s 1.27*10^89. Nevertheless, this quantity of candidates remains fundamentally sufficient.
         # Concurrently, owing to the presence of negative values, the character set size amounts to 256 bits * 2.
-        # The total number of rounds fluctuates between 32 and 128.
+        # The total number of rounds fluctuates between 32 and 64.
         for i in range(rotors_num):
             value : str = parameter + str(i)
             new_deflect : int = int.from_bytes(hashlib.sha256(value.encode('utf-8')).digest(), byteorder="big")

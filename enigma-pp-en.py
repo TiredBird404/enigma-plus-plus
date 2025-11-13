@@ -4,7 +4,7 @@ import time
 from tkinter import messagebox
 # For Cryption
 import hashlib
-import bz2
+import zlib
 import secrets
 import hmac
 import base64
@@ -259,7 +259,7 @@ class StringProcessor:
 
     def compress(self) -> str: # Compress the string and output the Base64 text.
         data : bytes = self.string.encode('utf-8')
-        data_compressed : bytes = bz2.compress(data, compresslevel=9)
+        data_compressed : bytes = zlib.compress(data, level=9)
         compressed_string : bytes = base64.b64encode(data_compressed)
         return compressed_string.decode('utf-8')
     
@@ -269,7 +269,7 @@ class StringProcessor:
         except:
             return False, ''
         try:
-            decompressed_data : bytes = bz2.decompress(data)
+            decompressed_data : bytes = zlib.decompress(data)
         except:
             return False, ''
         return True, decompressed_data.decode("utf-8")

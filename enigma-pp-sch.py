@@ -194,7 +194,7 @@ class ParameterProcessing:
         return turn_extent # 数值坐落于-2^32至2^32
 
     def deflect_generation(self) -> list[int]:
-        rotors_max_num : int = 128
+        rotors_max_num : int = 64
         rotors_min_num : int = 32
 
         parameter : str = self.parameters[0]
@@ -205,7 +205,7 @@ class ParameterProcessing:
         # 为每个初始偏移参数生成sha256值，并转为int，其基于密钥。
         # 256bits大约为1.16*10^77，与64!的1.27*10^89有一定差距，但如此数量的候选基本足够
         # 同时，因为有负数存在，因此字符库的数量为256bits*2
-        # 总轮子数坐落于32个至128个不定
+        # 总轮子数坐落于32个至64个不定
         for i in range(rotors_num):
             value : str = parameter + str(i)
             new_deflect : int = int.from_bytes(hashlib.sha256(value.encode('utf-8')).digest(), byteorder="big")

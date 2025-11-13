@@ -34,7 +34,6 @@ class CryptionMain:
 
         # 文本打乱
         nonce : str = secrets.token_bytes(self.random_length).hex() # 生成随机值，其将作为打乱目前文本的种子值
-        ## 将base64文本与填充的字符数结合，以避免填充符所可能导致的已知明文可能
         unrested_text : str = StringProcessor(text_no_fill + str(fill_num) + mac).unrest(nonce) # 使用随机值打乱文本与mac的结合
 
         # 密钥处理

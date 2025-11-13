@@ -255,7 +255,7 @@ class StringProcessor:
 
     def compress(self) -> str: # 压缩字符串，并输出base64文本
         data : bytes = self.string.encode('utf-8')
-        data_compressed : bytes = zlib.compress(data, level=9)
+        data_compressed : bytes = zlib.compress(data)
         compressed_string : bytes = base64.b64encode(data_compressed)
         return compressed_string.decode('utf-8')
     

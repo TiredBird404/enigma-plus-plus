@@ -202,7 +202,7 @@ class ParameterProcessing:
         rotors_num : int = ((parameter_tiny - rotors_min_num) % (rotors_max_num - rotors_min_num + 1)) + rotors_min_num
         
         deflect : list[int] = []
-        # 为每个初始偏移参数生成sha3_256值，并转为int，其基于密钥。
+        # 为每个初始偏移参数生成sha256值，并转为int，其基于密钥。
         # 256bits大约为1.16*10^77，与64!的1.27*10^89有一定差距，但如此数量的候选基本足够
         # 同时，因为有负数存在，因此字符库的数量为256bits*2
         # 总轮子数坐落于32个至128个不定

@@ -263,12 +263,10 @@ class StringProcessor:
         try:
             data : bytes = base64.b64decode(self.string)
         except:
-            # print("转换失败")
             return False, ''
         try:
             decompressed_data : bytes = bz2.decompress(data)
         except:
-            # print("解压失败")
             return False, ''
         return True, decompressed_data.decode("utf-8")
     

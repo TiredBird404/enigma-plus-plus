@@ -340,7 +340,7 @@ class UIManager:
 
         self.key_entry.place(x=20,y=15,width=760,height=35)
         self.text_box.place(x=20, y=55, width=745, height=510)
-        self.scrollbar.place(x=765, y=60, width=15, height=505)
+        self.scrollbar.place(x=765, y=55, width=15, height=510)
         self.text_box.config(yscrollcommand=self.scrollbar.set)
 
         self.encryption_button.place(x=20, y=575,width=370, height=50)

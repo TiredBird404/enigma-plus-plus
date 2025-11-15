@@ -364,7 +364,7 @@ class UIManager:
         self.root.update()
 
     def access_encryption(self) -> None:
-        start_time = time.time()
+        start_time : float = time.time()
         self.processing_ui(True)
         user_key : str = self.key_entry.get()
         user_text : str = self.text_box.get("1.0", "end-1c")
@@ -378,7 +378,7 @@ class UIManager:
         messagebox.showinfo("加密完成",f"总共花费{str(end_time - start_time)[:5]}秒")
         
     def access_decryption(self) -> None:
-        start_time = time.time()
+        start_time : float = time.time()
         self.processing_ui(True)
         user_key : str = self.key_entry.get()
         crypted_text : str = self.text_box.get("1.0", "end-1c")

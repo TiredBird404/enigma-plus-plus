@@ -71,7 +71,10 @@ class CryptionMain:
             salt : bytes = bytes.fromhex(salt_base16) # Convert the hexadecimal random salt to byte data
         except:
             return False, ''
-        cryption_parameter : str = self.generate_cryption_parameter(salt)
+        try:
+            cryption_parameter : str = self.generate_cryption_parameter(salt)
+        except:
+            return False, ''
 
         # Decryption
         enigma = EnigmaMachine(encrypted_rested_result[random_hex_lenght:], cryption_parameter)

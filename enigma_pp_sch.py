@@ -69,7 +69,10 @@ class CryptionMain:
             salt : bytes = bytes.fromhex(salt_base16) # 将十六进制的随机盐转为字节数据
         except:
             return False, ''
-        cryption_parameter : str = self.generate_cryption_parameter(salt)
+        try:
+            cryption_parameter : str = self.generate_cryption_parameter(salt)
+        except:
+            return False, ''
 
         # 解密
         enigma = EnigmaMachine(encrypted_rested_result[random_hex_lenght:], cryption_parameter) # 将打乱随机值与打乱后的文本结合并将此与密钥、随机盐一同置入恩尼各玛机
